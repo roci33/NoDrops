@@ -15,7 +15,7 @@ class NoDrops extends PluginBase implements Listener
     }
 
 public function onDeath(PlayerDeathEvent $event){
-    if(in_array($event->getPlayer()->getLevel()->getName(), ["fps", "mondo2"])){
+    if(in_array($event->getPlayer()->getLevel()->getName(), ["mondo1", "mondo2"])){
         $event->setDrops([]);
     }
   }
