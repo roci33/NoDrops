@@ -12,10 +12,18 @@ class NoDrops extends PluginBase implements Listener
     {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getLogger()->info("Abilitato");
+      @mkdir($this->getDataFolder());
+        $wconfig = new Config($this->getDataFolder(). "config.yml",Config::YAML, array(
+            "Mondi dove è possibile usare il commando" => "world"
+
+        ));
+
+        $wconfig->save();
+
     }
 
 public function onDeath(PlayerDeathEvent $event){
-    if(in_array($event->getPlayer()->getLevel()->getName(), ["mondo1", "mondo2"])){
+    if(in_array($event->getPlayer()->getLevel()->getName(), [$wconfig->get("Mondi dove è possibile usare il commando")])){
         $event->setDrops([]);
     }
   }
