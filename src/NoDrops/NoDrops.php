@@ -16,7 +16,7 @@ class NoDrops extends PluginBase implements Listener
         $this->getLogger()->info("Abilitato");
       @mkdir($this->getDataFolder());
         $wconfig = new Config($this->getDataFolder(). "config.yml",Config::YAML, array(
-            "Mondi dove è possibile usare il commando" => "world"
+            "Mondi dove il drop è disabilitato" => "world"
 
         ));
 
@@ -28,7 +28,7 @@ public function onDeath(PlayerDeathEvent $event){
    $wconfig = new Config($this->getDataFolder()."config.yml", Config::YAML);
 
 
- if(in_array($event->getPlayer()->getLevel()->getName(), [$wconfig->get("Mondi dove è possibile usare il commando")])){
+ if(in_array($event->getPlayer()->getLevel()->getName(), [$wconfig->get("Mondi dove il drop è disabilitato")])){
         $event->setDrops([]);
     }
   }
